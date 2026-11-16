@@ -36,7 +36,7 @@
     { id: "demo-4", make: "Mercedes-Benz", model: "G63", variant: "AMG", year: 2021, price: 32000000, mileage: 18000, engine: "4.0L V8 Biturbo", transmission: "Automatic", fuel: "Petrol", body_type: "SUV", color: "Black", status: "available" },
     { id: "demo-5", make: "Toyota", model: "Hilux", variant: "GR Sport", year: 2023, price: 7400000, mileage: 9000, engine: "2.8L Diesel", transmission: "Automatic", fuel: "Diesel", body_type: "Pickup", color: "Red", status: "available" },
     { id: "demo-6", make: "Mazda", model: "CX-5", variant: "Touring", year: 2018, price: 3300000, mileage: 67000, engine: "2.2L Diesel", transmission: "Automatic", fuel: "Diesel", body_type: "SUV", color: "Grey", status: "sold" },
-  ].map((c, i) => ({ ...c, images: [], cover_image: null, created_at: new Date(Date.now() - i * 864e5).toISOString() }));
+  ].map((c, i) => ({ ...c, images: i === 0 ? ["assets/banner10.jpg", "assets/banner-mobile.jpg", "assets/banner10.jpg?2", "assets/banner-mobile.jpg?2", "assets/banner10.jpg?3", "assets/banner-mobile.jpg?3", "assets/banner10.jpg?4"] : [], cover_image: null, created_at: new Date(Date.now() - i * 864e5).toISOString() }));
 
   async function fetchCars() {
     if (!sb) return demoCars;

@@ -539,3 +539,66 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .brand i { width: 46px; height: 46px; }
   .brand span { font-size: 8.5px; letter-spacing: 0.04em; }
 }
+
+/* ============================================================
+   Vehicle page: photo collage (desktop) + swipe gallery (phones)
+   ============================================================ */
+.car-layout { display: block; }
+.car-layout > .skeleton-block { margin-bottom: 24px; }
+.gallery { margin-bottom: 36px; }
+.collage { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 8px; height: clamp(360px, 40vw, 520px); border-radius: var(--radius); overflow: hidden; }
+.cg { position: relative; padding: 0; border: 0; background: var(--card-2); cursor: zoom-in; overflow: hidden; min-width: 0; min-height: 0; }
+.cg img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease), filter 0.3s; }
+.cg:hover img { transform: scale(1.04); filter: brightness(1.08); }
+.cg:first-child { grid-column: span 2; grid-row: span 2; }
+.collage.n1 .cg { grid-column: 1 / -1; grid-row: 1 / -1; }
+.collage.n2 .cg { grid-column: span 2; grid-row: span 2; }
+.collage.n3 .cg:not(:first-child) { grid-column: span 2; }
+.collage.n4 .cg:nth-child(2) { grid-column: span 2; }
+.cg-more { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0, 0, 0, 0.6); font-size: 18px; font-weight: 700; }
+.cg-all {
+  position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 8px;
+  height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line-2);
+  background: rgba(17, 17, 18, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s, border-color 0.2s;
+}
+.cg-all:hover { background: var(--red); border-color: var(--red); }
+.cg-all svg { width: 16px; height: 16px; }
+.g-empty { aspect-ratio: 21 / 9; border-radius: var(--radius); overflow: hidden; }
+
+.swiper { display: none; position: relative; }
+.sw-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; border-radius: 14px; overscroll-behavior-x: contain; }
+.sw-track::-webkit-scrollbar { display: none; }
+.sw-slide { flex: 0 0 100%; scroll-snap-align: center; scroll-snap-stop: always; aspect-ratio: 1 / 1; background: var(--card-2); }
+.sw-slide img { width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; }
+.sw-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%;
+  display: grid; place-items: center; border: 0; background: rgba(0, 0, 0, 0.55); color: #fff; cursor: pointer;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: opacity 0.2s, background 0.2s;
+}
+.sw-nav svg { width: 20px; height: 20px; }
+.sw-nav:active { background: var(--red); }
+.sw-nav:disabled { opacity: 0; pointer-events: none; }
+.sw-prev { left: 10px; } .sw-next { right: 10px; }
+.sw-count { position: absolute; right: 12px; bottom: 12px; padding: 4px 11px; border-radius: 999px; font-size: 12px; font-weight: 600; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(6px); pointer-events: none; }
+.lb-count { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); font-size: 13px; color: rgba(255, 255, 255, 0.75); }
+.lightbox img { user-select: none; -webkit-user-drag: none; }
+
+.car-info { position: static; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 48px; align-items: start; }
+.ci-head { grid-column: 1; }
+.car-info .spec-grid { grid-column: 2; grid-row: 1 / span 2; margin: 0; }
+.car-info .desc { grid-column: 1; margin-top: 28px; }
+.ci-head .cta-row { margin-top: 24px; }
+
+@media (max-width: 900px) {
+  .car-info { grid-template-columns: 1fr; }
+  .car-info .spec-grid { grid-column: 1; grid-row: auto; margin: 22px 0 0; }
+  .collage { height: 340px; }
+}
+@media (max-width: 760px) {
+  .collage { display: none; }
+  .swiper { display: block; }
+  .gallery { margin-bottom: 20px; }
+  .ci-head .cta-row { margin-top: 16px; }
+  .car-info .desc { margin-top: 22px; }
+}
