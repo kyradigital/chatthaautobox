@@ -532,3 +532,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
   #inventory .section-head { flex-direction: column; align-items: center; margin-bottom: 18px; gap: 6px; }
   #inventory .section-title { font-size: 20px; }
 }
+
+/* ---------- Mobile: 5 brand logos in one row ---------- */
+@media (max-width: 760px) {
+  .brands { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .brand i { width: 46px; height: 46px; }
+  .brand span { font-size: 8.5px; letter-spacing: 0.04em; }
+}
