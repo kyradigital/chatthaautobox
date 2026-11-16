@@ -522,3 +522,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Inventory heading: small, centred, caps ---------- */
+#inventory .section-head { flex-direction: column; align-items: center; text-align: center; gap: 8px; margin-bottom: 28px; }
+#inventory .section-title { font-size: clamp(20px, 2.4vw, 30px); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 10px; }
+#inventory .eyebrow::after { content: ""; width: 26px; height: 2px; background: var(--red); }
+#inventory .count { padding: 0; }
+@media (max-width: 760px) {
+  #inventory .section-head { flex-direction: column; align-items: center; margin-bottom: 18px; gap: 6px; }
+  #inventory .section-title { font-size: 20px; }
+}
